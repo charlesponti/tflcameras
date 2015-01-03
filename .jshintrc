@@ -83,7 +83,9 @@
 
     // Custom Globals
     "globals": {
+      "$": true,
       "angular": true,
+      "google": true,
       "browser": true,
       "by": true
     }
