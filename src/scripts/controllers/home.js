@@ -56,7 +56,14 @@ module.exports = function(Cameras) {
       position: new google.maps.LatLng(camera.lat, camera.lng),
       map: map,
       title: camera.location,
-      clickable: true
+      clickable: true,
+      icon: {
+        url: 'images/camera.png',
+        size: new google.maps.Size(81, 81),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(0, 0),
+        scaledSize: new google.maps.Size(25, 25)
+      }
     });
 
     // Create infowindow for marker
