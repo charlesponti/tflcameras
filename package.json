@@ -63,7 +63,8 @@
     "protractor": "^1.5.0",
     "run-sequence": "^1.0.2",
     "superstatic": "^1.1.6",
-    "vinyl-source-stream": "^1.0.0"
+    "vinyl-source-stream": "^1.0.0",
+    "xml2json": "^0.5.1"
   },
   "engines": {
     "node": "0.10.35"
@@ -84,6 +85,7 @@
     "url": "git://github.com/theponti/facade-angular.git"
   },
   "scripts": {
+    "cameras": "gulp cameras",
     "build": "gulp build",
     "dev": "gulp",
     "postinstall": "bower install && gulp build",
