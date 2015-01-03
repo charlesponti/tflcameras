@@ -144,7 +144,21 @@ gulp.task('server', function(next) {
   server.listen(function() {
     console.log('Server running on port ' + server.port);
   });
-  next();
+  return next();
+});
+
+gulp.task('cameras', function(next) {
+  var fs = require('fs');
+  var parser = require('xml2json');
+  // Cameras from:
+  // https://www.tfl.gov.uk/cdn/static/cms/documents/camera-list.xml
+  var camerasXML = fs.readFileSync('./tflcameras.xml');
+  var camerasJSON = JSON.parse(parser.toJson(camerasXML));
+  var cameras = {
+    cameras: camerasJSON.syndicatedFeed.cameraList.camera
+  };
+  fs.writeFileSync('./build/cameras.json', JSON.stringify(cameras));
+  return next();
 });
 
 gulp.task('prod', function() {
