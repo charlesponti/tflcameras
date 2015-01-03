@@ -13,6 +13,7 @@ require('angular-resource');
 require('./templates');
 require('./controllers');
 require('./directives');
+require('./services');
 
 // mount on window for testing
 angular.module('app', [
@@ -20,7 +21,8 @@ angular.module('app', [
   'ngResource',
   'templates',
   'app.directives',
-  'app.controllers'
+  'app.controllers',
+  'app.services'
 ]);
 
 angular.module('app').constant('Constants', require('./constants'));
