@@ -41,8 +41,8 @@ module.exports = function(Cameras, $timeout) {
    */
   vm.closeInfos = function() {
     // Loop through all info boxes and close them.
-    _.each(vm.infos, function(window) {
-      window.close();
+    _.each(vm.infos, function(infowindow) {
+      return infowindow.close();
     });
 
     return vm;
