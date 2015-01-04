@@ -10,7 +10,7 @@ module.exports = function($q, $http) {
    */
   var service = {};
 
-  var picUrl = 'http://www.tfl.gov.uk/tfl/livetravelnews/trafficcams/cctv/';
+  service.picUrl = 'http://www.tfl.gov.uk/tfl/livetravelnews/trafficcams/cctv/';
 
   /**
    * @desc Retrieve cameras
@@ -37,7 +37,7 @@ module.exports = function($q, $http) {
    * @return {String}
    */
   service.getImageUrl = function(file) {
-    return "<img class='camera-pic' src='"+ picUrl + file + "'>";
+    return "<img class='camera-pic' src='"+ service.picUrl + file + "'>";
   };
 
   return service;
