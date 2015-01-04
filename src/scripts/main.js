@@ -15,7 +15,7 @@ require('./controllers');
 require('./directives');
 require('./services');
 
-// mount on window for testing
+// Declare main application
 angular.module('app', [
   'ngRoute',
   'ngResource',
@@ -25,8 +25,11 @@ angular.module('app', [
   'app.services'
 ]);
 
+// Add constants
 angular.module('app').constant('Constants', require('./constants'));
 
+// Add configuration
 angular.module('app').config(require('./config'));
 
+// Bootstrap application
 angular.bootstrap(document, ['app']);
