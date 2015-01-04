@@ -21,6 +21,7 @@ module.exports = function(config) {
     ],
 
     files: [
+      'test/googlemapsmock.js',
       'src/scripts/main.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'test/unit/**/*.js'
