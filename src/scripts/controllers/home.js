@@ -5,7 +5,7 @@ var _ = require('lodash');
 /**
  * @ngInject
  */
-module.exports = function(Cameras) {
+module.exports = function(Cameras, $timeout) {
 
   /**
    * @desc Reference to controller
@@ -37,18 +37,21 @@ module.exports = function(Cameras) {
 
   /**
    * @desc Close all info windows
-   * @return {Object}
+   * @return {Object} vm
    */
   vm.closeInfos = function() {
+    // Loop through all info boxes and close them.
     _.each(vm.infos, function(window) {
       window.close();
     });
+
     return vm;
   };
 
   /**
    * @desc Add marker with info window to map
-   * @param {[type]} camera [description]
+   * @param {Object} camera Camera details
+   * @return {Object} vm
    */
   vm.addMarker = function(camera) {
     // Create marker for camera
@@ -57,6 +60,7 @@ module.exports = function(Cameras) {
       map: map,
       title: camera.location,
       clickable: true,
+      animation: google.maps.Animation.DROP,
       icon: {
         url: 'images/camera.png',
         size: new google.maps.Size(81, 81),
@@ -75,22 +79,26 @@ module.exports = function(Cameras) {
     vm.infos.push(infowindow);
 
     // Add listener to marker for click event
-    return google.maps.event.addListener(
+    google.maps.event.addListener(
       marker,
       'click',
       vm.onMarkerClick.bind(vm, map, marker, infowindow)
     );
+
+    return vm;
   };
 
   /**
-   * @desc
+   * @desc Handle click event of marker
    * @param {google.maps.Map} map
    * @param {google.maps.Marker} marker
    * @param {google.maps.InfoWindow} infowindow
+   * @return {Object} vm
    */
   vm.onMarkerClick = function(map, marker, infowindow) {
     vm.closeInfos();
     infowindow.open(map, marker);
+    return vm;
   };
 
   /**
@@ -98,13 +106,32 @@ module.exports = function(Cameras) {
    * @param {Object} data Response from request
    */
   vm.onCameraLoadSuccess = function(data) {
-    _.each(data.cameras, vm.addMarker);
+    vm.cameras = data.cameras;
+    return vm;
   };
 
   // Retrieve cameras
-  Cameras
-    .get()
-    .then(vm.onCameraLoadSuccess);
+  Cameras.get().then(vm.onCameraLoadSuccess);
+
+  /**
+   * @desc Add cameras to map
+   * @return {Object} vm
+   */
+  vm.addMarkersToMap = function() {
+    // Adding delay because map fires 'idle' event before all frames have been
+    // populated. This delay will not fully ensure that all frames are loaded as
+    // that is dependant upon network connection and device/browser performance.
+    // This delay will simply add a little buffer so the marker animation is
+    // less "janky".
+    $timeout(function() {
+      return _.each(vm.cameras, vm.addMarker);
+    }, 1500);
+
+    return vm;
+  };
+
+  // Add cameras to map once it is idle
+  google.maps.event.addListenerOnce(map, 'idle', vm.addMarkersToMap);
 
   return vm;
 };
