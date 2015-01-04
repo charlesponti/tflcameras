@@ -60,7 +60,9 @@ module.exports = function(Cameras, $timeout) {
       map: map,
       title: camera.location,
       clickable: true,
-      animation: google.maps.Animation.DROP,
+      // TODO Investigate and resolve memory leak issue with marker animation
+      // Commenting out due to odd memory leak issue
+      // animation: google.maps.Animation.DROP,
       icon: {
         url: 'images/camera.png',
         size: new google.maps.Size(81, 81),
