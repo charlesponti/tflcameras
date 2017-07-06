@@ -100,7 +100,7 @@
     "build-prod": "gulp prod",
     "dev": "gulp",
     "bootstrap": "npm install && bower install",
-    "start": "gulp prod && gulp server",
+    "start": "gulp prod && serve build",
     "postinstall": "gulp build",
     "protractor": "gulp protractor",
     "test": "node_modules/karma/bin/karma start test/karma.conf.js",
