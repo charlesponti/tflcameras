@@ -8,7 +8,7 @@ let cwd = process.cwd()
 
 let runSequence = require('run-sequence')
 const axios = require('axios')
-
+const path = require('path')
 // Gulp & Plugins
 let gulp = require('gulp')
 let $ = require('gulp-load-plugins')()
@@ -129,7 +129,7 @@ gulp.task('watch', function () {
 })
 
 gulp.task('server', function (next) {
-  serve({port: 3000})
+  serve(path.resolve(__dirname, 'build'), { port: 3000 })
 
   return next()
 })
