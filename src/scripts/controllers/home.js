@@ -107,8 +107,13 @@ module.exports = function(Cameras, $timeout) {
    * @desc Handle successful request for cameras
    * @param {Object} data Response from request
    */
-  vm.onCameraLoadSuccess = function(data) {
-    vm.cameras = data.cameras;
+  vm.onCameraLoadSuccess = function(response) {
+    vm.cameras = response.data.cameras;
+    
+    for (var i = 0; i < vm.cameras.length; i++) {
+      vm.addMarker(vm.cameras[i])
+    }
+    
     return vm;
   };
 
@@ -133,7 +138,7 @@ module.exports = function(Cameras, $timeout) {
   };
 
   // Add cameras to map once it is idle
-  google.maps.event.addListenerOnce(map, 'idle', vm.addMarkersToMap);
+  // google.maps.event.addListenerOnce(map, 'idle', vm.addMarkersToMap);
 
   return vm;
 };
