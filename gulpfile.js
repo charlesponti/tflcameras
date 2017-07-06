@@ -82,7 +82,7 @@ gulp.task('styles', function() {
   return gulp.src(files.styles.main)
     .pipe(sass({
       sourceComments: global.isProd ? 'none' : 'map',
-      sourceMap: 'sass',
+      // sourceMap: 'sass',
       outputStyle: global.isProd ? 'compressed' : 'nested'
     }))
     .pipe(gulpif(global.isProd, minifycss()))
