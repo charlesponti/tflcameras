@@ -8,3 +8,4 @@ build/**/*.html
 node_modules
 *.log
 templates.js
+index.html
