@@ -21,10 +21,10 @@ module.exports = function($q, $http) {
 
     $http
       .get('/cameras.json')
-      .success(function(response) {
+      .then(function(response) {
         return defer.resolve(response);
       })
-      .error(function(response) {
+      .catch(function(response) {
         return defer.reject(response);
       });
 
