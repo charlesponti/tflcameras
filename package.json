@@ -101,7 +101,7 @@
     "build": "gulp build",
     "build-prod": "gulp prod",
     "dev": "gulp",
-    "bootstrap": "npm install && bower install",
+    "bootstrap": "npm install",
     "start": "gulp prod && serve build",
     "postinstall": "gulp build",
     "protractor": "gulp protractor",
