@@ -3,7 +3,7 @@
 /**
  * ngInject
  */
-module.exports = function ($q, $http) {
+module.exports = ['$q', '$http', function ($q, $http) {
   /**
    * @desc Reference to service
    * @type {Object}
@@ -37,8 +37,8 @@ module.exports = function ($q, $http) {
    * @return {String}
    */
   service.getImageUrl = function (file) {
-    return "<img class='camera-pic' src='" + service.picUrl + file + "'>"
+    return "<img class='camera-pic' src='" + service.picUrl + file + ".jpg'>"
   }
 
   return service
-}
+}]

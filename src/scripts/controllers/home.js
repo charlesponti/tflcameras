@@ -73,7 +73,7 @@ module.exports = function (Cameras, $timeout) {
 
     // Create infowindow for marker
     var infowindow = new google.maps.InfoWindow({
-      content: Cameras.getImageUrl(camera.file) + '<br><br>' + camera.location
+      content: Cameras.getImageUrl(camera.id) + '<br><br>' + camera.location
     })
 
     // Add info window to list of info windows
