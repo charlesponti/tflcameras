@@ -24,9 +24,8 @@ let sass = require('gulp-sass')
 let minifycss = require('gulp-minify-css')
 
 // Scripts
-let jshint = require('gulp-jshint')
+let eslint = require('gulp-eslint')
 let browserify = require('browserify')
-let stylish = require('jshint-stylish')
 let source = require('vinyl-source-stream')
 let ngannotate = require('browserify-ngannotate')
 
@@ -59,23 +58,38 @@ let files = {
   }
 }
 
-gulp.task('jshint', function () {
-  return gulp.src(files.scripts.source)
-    .pipe(jshint())
-    .pipe(jshint.reporter(stylish))
+gulp.task('eslint', () => {
+  // ESLint ignores files with "node_modules" paths.
+  // So, it's best to have gulp ignore the directory as well.
+  // Also, Be sure to return the stream from the task;
+  // Otherwise, the task may end before the stream has finished.
+  return (
+    gulp.src(['src/**/*.js', '!node_modules/**', '!src/scripts/templates.js'])
+      // eslint() attaches the lint output to the "eslint" property
+      // of the file object so it can be used by other modules.
+      .pipe(eslint())
+      // eslint.format() outputs the lint results to the console.
+      // Alternatively use eslint.formatEach() (see Docs).
+      .pipe(eslint.format())
+      // To have the process exit with an error code (1) on
+      // lint error, return the stream and pipe to failAfterError last.
+      .pipe(eslint.failAfterError())
+  )
 })
 
-gulp.task('scripts', ['jshint'], function () {
-  return browserify({
-    entries: [files.scripts.main],
-    debug: !global.isProd,
-    insertGlobals: true,
-    transform: ngannotate
-  })
-    .bundle()
-    .pipe(source('bundle.js'))
-    .pipe(gulpif(global.isProd, streamify(uglify())))
-    .pipe(gulp.dest(files.scripts.build))
+gulp.task('scripts', ['eslint'], function () {
+  return (
+    browserify({
+      entries: [files.scripts.main],
+      debug: !global.isProd,
+      insertGlobals: true,
+      transform: ngannotate
+    })
+      .bundle()
+      .pipe(source('bundle.js'))
+      .pipe(gulpif(global.isProd, streamify(uglify())))
+      .pipe(gulp.dest(files.scripts.build))
+  )
 })
 
 gulp.task('styles', function () {

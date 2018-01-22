@@ -1,0 +1,7 @@
+{
+  "extends": ["eslint:recommended", "standard"],
+  "globals": {
+    "google": true,
+    "angular": true
+  }
+}
