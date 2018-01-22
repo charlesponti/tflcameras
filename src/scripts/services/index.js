@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 module.exports = angular.module('app.services', [])
-  .service('Cameras', require('./cameras'));
+  .service('Cameras', require('./cameras'))

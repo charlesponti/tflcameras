@@ -1,12 +1,11 @@
-'use strict';
+'use strict'
 
 /**
  * @ngInject
  */
-module.exports = function($locationProvider, $routeProvider) {
-
+module.exports = function ($locationProvider, $routeProvider) {
   // Set HTML5 pushState
-  $locationProvider.html5Mode(true);
+  $locationProvider.html5Mode(true)
 
   // Set routes
   return $routeProvider
@@ -16,6 +15,5 @@ module.exports = function($locationProvider, $routeProvider) {
     })
     .otherwise({
       redirectTo: '/'
-    });
-
-};
+    })
+}

@@ -1,3 +1,3 @@
-'use strict';
+'use strict'
 
-module.exports = angular.module('app.directives', []);
+module.exports = angular.module('app.directives', [])

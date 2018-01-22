@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 module.exports = angular.module('app.controllers', [])
-  .controller('HomeCtrl', require('./home'));
+  .controller('HomeCtrl', require('./home'))
