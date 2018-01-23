@@ -3,5 +3,8 @@
   "globals": {
     "google": true,
     "angular": true
+  },
+  "env": {
+    "jasmine": true
   }
 }
