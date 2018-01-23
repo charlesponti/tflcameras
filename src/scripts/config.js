@@ -5,7 +5,10 @@
  */
 module.exports = function ($locationProvider, $routeProvider) {
   // Set HTML5 pushState
-  $locationProvider.html5Mode(true)
+  $locationProvider.html5Mode({
+    enabled: true,
+    requireBase: false
+  })
 
   // Set routes
   return $routeProvider

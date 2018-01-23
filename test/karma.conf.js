@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
 
     basePath: '../',
@@ -42,5 +42,5 @@ module.exports = function(config) {
       'karma-chrome-launcher'
     ]
 
-  });
-};
+  })
+}
