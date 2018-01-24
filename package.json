@@ -107,9 +107,5 @@
     "protractor": "gulp protractor",
     "test": "node_modules/karma/bin/karma start test/karma.conf.js",
     "test-single": "node_modules/karma/bin/karma start test/karma.conf.js --single-run"
-  },
-  "eslintConfig": {
-    "extends": "standard",
-    "parser": "babel-eslint"
   }
 }

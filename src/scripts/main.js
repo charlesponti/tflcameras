@@ -10,7 +10,6 @@ require('angular-route')
 require('angular-resource')
 
 // Application dependencies
-require('./templates')
 require('./controllers')
 require('./directives')
 require('./services')

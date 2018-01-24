@@ -104,7 +104,8 @@ gulp.task('styles', function () {
 })
 
 gulp.task('views', function () {
-  gulp.src('src/index.html')
+  gulp
+    .src('src/index.html')
     .pipe(minifyHTML({
       comments: !global.isProd,
       spare: !global.isProd,
@@ -112,11 +113,12 @@ gulp.task('views', function () {
     }))
     .pipe(gulp.dest(files.html.build))
 
-  return gulp.src('./src/views/**/*.html')
-    .pipe(templateCache({
-      standalone: true
-    }))
-    .pipe(gulp.dest('./src/scripts'))
+  return (
+    gulp
+      .src('./src/views/**/*.html')
+      .pipe(templateCache({ standalone: true }))
+      .pipe(gulp.dest('./build/scripts'))
+  )
 })
 
 gulp.task('test', function (done) {
