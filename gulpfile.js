@@ -7,8 +7,8 @@ global.isProd = false
 let cwd = process.cwd()
 
 let runSequence = require('run-sequence')
-const axios = require('axios')
 const path = require('path')
+
 // Gulp & Plugins
 let gulp = require('gulp')
 let $ = require('gulp-load-plugins')()
@@ -146,26 +146,6 @@ gulp.task('watch', function () {
 
 gulp.task('server', function (next) {
   serve(path.resolve(__dirname, 'build'), { port: 3000 })
-
-  return next()
-})
-
-gulp.task('cameras', function (next) {
-  let fs = require('fs')
-  let parser = require('xml2json')
-
-  axios
-    .get('https://www.tfl.gov.uk/cdn/static/cms/documents/camera-list.xml')
-    .then(function (response) {
-      // let camerasXML = fs.readFileSync('./tflcameras.xml')
-      let camerasJSON = JSON.parse(parser.toJson(response.data))
-      let cameras = {
-        cameras: camerasJSON.syndicatedFeed.cameraList.camera.map(function (c) {
-          return Object.assign({}, c, { file: '0000' + c.id + '.jpg' })
-        })
-      }
-      fs.writeFileSync('./build/cameras.json', JSON.stringify(cameras))
-    })
 
   return next()
 })

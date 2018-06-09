@@ -97,10 +97,10 @@
     "url": "git://github.com/theponti/facade-angular.git"
   },
   "scripts": {
-    "cameras": "gulp cameras",
     "build": "gulp build",
     "build-prod": "gulp prod",
     "dev": "gulp",
+    "cameras": "node bin/cameras.js",
     "bootstrap": "npm install",
     "start": "gulp prod && serve build",
     "postinstall": "gulp build",
