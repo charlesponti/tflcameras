@@ -104,8 +104,8 @@
     "bootstrap": "npm install",
     "start": "gulp prod && serve build",
     "postinstall": "gulp build",
-    "protractor": "gulp protractor",
-    "test": "node_modules/karma/bin/karma start test/karma.conf.js",
-    "test-single": "node_modules/karma/bin/karma start test/karma.conf.js --single-run"
+    "test": "$(npm bin)/karma start test/karma.conf.js",
+    "test:e2e": "$(npm bin)/protractor",
+    "test:single": "npm test -- --single-run"
   }
 }
