@@ -1,6 +1,6 @@
 # [TFL Cameras](https://tflcameras.firebaseapp.com/)
 
-[![Codeship Status for theponti/tflcameras](https://codeship.com/projects/740ef6a0-7505-0132-8185-6662d475f668/status?branch=master)](https://codeship.com/projects/55110)
+[![Codeship Status for tflcameras](https://app.codeship.com/projects/864ffb80-7638-0132-e73c-7af07ea0b4c3/status?branch=master)](https://app.codeship.com/projects/55226)
 
 ![Screenshot](public/tfl_screenshot.png)
 
