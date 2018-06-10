@@ -12,5 +12,5 @@ axios
         return { ...c, file: `0000${c.id}.jpg` }
       })
     }
-    fs.writeFileSync(path.resolve(__dirname, '../build/cameras.json'), JSON.stringify(cameras))
+    fs.writeFileSync(path.resolve(__dirname, '../public/cameras.json'), JSON.stringify(cameras))
   })

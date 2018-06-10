@@ -15,7 +15,6 @@ require('./services')
 angular.module('app', [
   'ngRoute',
   'ngResource',
-  'templates',
   'app.directives',
   'app.controllers',
   'app.services'

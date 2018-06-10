@@ -1,5 +1,5 @@
 .DS_Store
-build/scripts/**
-build/styles/**
+public/scripts/**
+public/styles/**
 node_modules
 *.log

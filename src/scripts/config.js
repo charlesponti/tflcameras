@@ -13,7 +13,7 @@ module.exports = function ($locationProvider, $routeProvider) {
   // Set routes
   return $routeProvider
     .when('/', {
-      templateUrl: 'home.html',
+      templateUrl: '../views/home.html',
       controller: 'HomeCtrl as home'
     })
     .otherwise({

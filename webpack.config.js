@@ -1,14 +1,14 @@
-const path = require('path');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const env = process.env.NODE_ENV;
-const HTMLWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const env = process.env.NODE_ENV
+const HTMLWebpackPlugin = require('html-webpack-plugin')
 
 const config = {
   mode: env === 'production' ? 'production' : 'development',
   entry: path.resolve(__dirname, './src/scripts/main.js'),
   output: {
     filename: '[name].js',
-    path: path.join(__dirname, './build/assets')
+    path: path.join(__dirname, './public/assets')
   },
   module: {
     rules: [
