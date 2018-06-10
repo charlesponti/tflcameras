@@ -46,7 +46,7 @@
     "xml2json": "^0.11.2"
   },
   "engines": {
-    "node": ">=6.9.0"
+    "node": ">=9.9.0"
   },
   "homepage": "https://github.com/charlesponti/tflcameras",
   "keywords": [
