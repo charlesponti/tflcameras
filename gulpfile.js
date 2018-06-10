@@ -7,8 +7,8 @@ global.isProd = false
 let cwd = process.cwd()
 
 let runSequence = require('run-sequence')
-const axios = require('axios')
 const path = require('path')
+
 // Gulp & Plugins
 let gulp = require('gulp')
 let $ = require('gulp-load-plugins')()
@@ -58,40 +58,6 @@ let files = {
   }
 }
 
-gulp.task('eslint', () => {
-  // ESLint ignores files with "node_modules" paths.
-  // So, it's best to have gulp ignore the directory as well.
-  // Also, Be sure to return the stream from the task;
-  // Otherwise, the task may end before the stream has finished.
-  return (
-    gulp.src(['src/**/*.js', '!node_modules/**', '!src/scripts/templates.js'])
-      // eslint() attaches the lint output to the "eslint" property
-      // of the file object so it can be used by other modules.
-      .pipe(eslint())
-      // eslint.format() outputs the lint results to the console.
-      // Alternatively use eslint.formatEach() (see Docs).
-      .pipe(eslint.format())
-      // To have the process exit with an error code (1) on
-      // lint error, return the stream and pipe to failAfterError last.
-      .pipe(eslint.failAfterError())
-  )
-})
-
-gulp.task('scripts', ['eslint'], function () {
-  return (
-    browserify({
-      entries: [files.scripts.main],
-      debug: !global.isProd,
-      insertGlobals: true,
-      transform: ngannotate
-    })
-      .bundle()
-      .pipe(source('bundle.js'))
-      .pipe(gulpif(global.isProd, streamify(uglify())))
-      .pipe(gulp.dest(files.scripts.build))
-  )
-})
-
 gulp.task('styles', function () {
   return gulp.src(files.styles.main)
     .pipe(sass({
@@ -101,24 +67,6 @@ gulp.task('styles', function () {
     }))
     .pipe(gulpif(global.isProd, minifycss()))
     .pipe(gulp.dest(files.styles.build))
-})
-
-gulp.task('views', function () {
-  gulp
-    .src('src/index.html')
-    .pipe(minifyHTML({
-      comments: !global.isProd,
-      spare: !global.isProd,
-      empty: true
-    }))
-    .pipe(gulp.dest(files.html.build))
-
-  return (
-    gulp
-      .src('./src/views/**/*.html')
-      .pipe(templateCache({ standalone: true }))
-      .pipe(gulp.dest('./build/scripts'))
-  )
 })
 
 gulp.task('test', function (done) {
@@ -146,26 +94,6 @@ gulp.task('watch', function () {
 
 gulp.task('server', function (next) {
   serve(path.resolve(__dirname, 'build'), { port: 3000 })
-
-  return next()
-})
-
-gulp.task('cameras', function (next) {
-  let fs = require('fs')
-  let parser = require('xml2json')
-
-  axios
-    .get('https://www.tfl.gov.uk/cdn/static/cms/documents/camera-list.xml')
-    .then(function (response) {
-      // let camerasXML = fs.readFileSync('./tflcameras.xml')
-      let camerasJSON = JSON.parse(parser.toJson(response.data))
-      let cameras = {
-        cameras: camerasJSON.syndicatedFeed.cameraList.camera.map(function (c) {
-          return Object.assign({}, c, { file: '0000' + c.id + '.jpg' })
-        })
-      }
-      fs.writeFileSync('./build/cameras.json', JSON.stringify(cameras))
-    })
 
   return next()
 })

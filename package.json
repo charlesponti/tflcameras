@@ -1,111 +1,94 @@
 {
-  "name": "facade-angular",
-  "description": "An AngularJS boilerplate",
+  "name": "tflcameras",
+  "description": "An application to display the TFL cameras in London",
   "version": "1.0.0",
-  "author": "CJ Ponti <cjponti@gmail.com>",
-  "browser": {
-    "angular": "./node_modules/angular/angular.js",
-    "angular-cookies": "./node_modules/angular-cookies/angular-cookies.js"
-  },
-  "browserify": {
-    "transform": [
-      "browserify-shim"
-    ]
-  },
-  "browserify-shim": {
-    "angular": {
-      "depends": "jquery:jQuery",
-      "exports": "angular"
-    },
-    "angular-cookies": {
-      "depends": "angular",
-      "exports": "angular.module('ngCookies').name"
-    },
-    "angular-ui-router": {
-      "depends": "angular"
-    }
-  },
+  "author": "CJ Ponti <cj@ponti.io>",
   "bugs": {
-    "url": "https://github.com/theponti/facade-angular/issues"
+    "url": "https://github.com/charlesponti/tflcameras/issues"
   },
   "dependencies": {
-    "angular": "^1.3.36",
-    "angular-cookies": "^1.3.36",
-    "angular-resource": "^1.3.36",
-    "angular-route": "^1.3.36",
-    "axios": "^0.17.1",
-    "jquery": ">3.0.0",
-    "jshint": "^2.9.5",
-    "lodash": "^4.17.4"
+    "@angular/common": "^5.2.5",
+    "@angular/compiler": "^5.2.5",
+    "@angular/core": "^5.2.5",
+    "@angular/forms": "^5.2.5",
+    "@angular/platform-browser": "^5.2.5",
+    "@angular/platform-browser-dynamic": "^5.2.5",
+    "@angular/router": "^5.2.5",
+    "@angular/upgrade": "^5.2.5",
+    "angular": "^1.7.0",
+    "angular-cookies": "^1.7.0",
+    "angular-resource": "^1.7.0",
+    "angular-route": "^1.7.0",
+    "axios": "^0.18.0",
+    "bootstrap": "4.0.0",
+    "core-js": "^2.5.3",
+    "express": "^4.16.3",
+    "jquery": "^3.0.0",
+    "lodash": "4.17.5",
+    "moment": "~2.19.3",
+    "reflect-metadata": "^0.1.12",
+    "rxjs": "^5.5.6",
+    "zone.js": "^0.8.20"
   },
   "devDependencies": {
-    "angular-mocks": "^1.3.8",
-    "babel-eslint": "^8.2.1",
-    "browserify": "^15.2.0",
-    "browserify-ngannotate": "^2.0.0",
-    "browserify-shim": "^3.8.2",
-    "eslint": "^4.16.0",
-    "eslint-config-google": "^0.9.1",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-node": "^5.2.1",
-    "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "gulp": "^3.8.6",
-    "gulp-angular-templatecache": "^2.2.0",
-    "gulp-concat": "^2.2.0",
-    "gulp-eslint": "^4.0.1",
-    "gulp-if": "^2.0.2",
-    "gulp-jshint": "^2.1.0",
-    "gulp-karma": "0.0.5",
-    "gulp-load-plugins": "^1.5.0",
-    "gulp-minify-css": "^1.2.4",
-    "gulp-minify-html": "^1.0.6",
-    "gulp-protractor": "^4.1.0",
-    "gulp-sass": "^3.1.0",
-    "gulp-streamify": "^1.0.2",
-    "gulp-uglify": "^3.0.0",
-    "jasmine-core": "^2.1.2",
-    "jshint-stylish": "^2.2.1",
-    "karma": "^2.0.0",
-    "karma-bro": "^0.11.1",
+    "angular-mocks": "^1.7.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "jasmine-core": "^3.1.0",
+    "karma": "^2.0.2",
     "karma-chrome-launcher": "^2.2.0",
-    "karma-jasmine": "^1.1.1",
-    "protractor": "^5.2.2",
-    "run-sequence": "^2.2.1",
-    "serve": "^6.0.1",
-    "superstatic": "^5.0.1",
-    "vinyl-source-stream": "^2.0.0",
-    "xml2json": "^0.11.0"
+    "karma-jasmine": "^1.1.2",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^3.0.0",
+    "ng-annotate-loader": "^0.6.1",
+    "node-sass": "^4.9.0",
+    "postcss-loader": "^2.1.5",
+    "protractor": "^5.3.2",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.12.0",
+    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-cli": "^3.0.3",
+    "xml2json": "^0.11.2"
   },
   "engines": {
-    "node": ">=6.9.0"
+    "node": ">=9.9.0"
   },
-  "homepage": "https://github.com/theponti/facade-angular",
+  "homepage": "https://github.com/charlesponti/tflcameras",
   "keywords": [
-    "static",
-    "node",
-    "html",
+    "angular",
     "css",
+    "html",
+    "node",
     "sass",
-    "angular"
+    "static"
   ],
   "license": "MIT",
   "main": "gulpfile.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/theponti/facade-angular.git"
+    "url": "git://github.com//charlesponti/tflcameras.git"
   },
   "scripts": {
-    "cameras": "gulp cameras",
-    "build": "gulp build",
-    "build-prod": "gulp prod",
-    "dev": "gulp",
-    "bootstrap": "npm install",
-    "start": "gulp prod && serve build",
-    "postinstall": "gulp build",
-    "protractor": "gulp protractor",
-    "test": "node_modules/karma/bin/karma start test/karma.conf.js",
-    "test-single": "node_modules/karma/bin/karma start test/karma.conf.js --single-run"
+    "build": "NODE_ENV=production $(npm bin)/webpack-cli --progress --stats",
+    "build:dev": "NODE_ENV=development $(npm bin)/webpack-cli --progress --stats",
+    "build:stats": "STATS=true NODE_ENV=production $(npm bin)/webpack-cli --display none",
+    "build:watch": "npm run build:dev -- --watch",
+    "cameras": "node bin/cameras.js",
+    "test": "NODE_ENV=test $(npm bin)/karma start test/karma.conf.js",
+    "test:e2e": "NODE_ENV=test $(npm bin)/protractor",
+    "test:single": "npm test -- --single-run"
   }
 }

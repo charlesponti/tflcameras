@@ -1,5 +1,3 @@
-'use strict'
-
 module.exports = function (config) {
   config.set({
 
@@ -16,30 +14,27 @@ module.exports = function (config) {
     ],
 
     frameworks: [
-      'browserify',
       'jasmine'
     ],
 
     files: [
       'test/googlemapsmock.js',
-      'build/scripts/templates.js',
       'src/scripts/main.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'test/unit/**/*.js'
     ],
 
     preprocessors: {
-      'test/unit/**/*.js': ['browserify'],
-      'src/scripts/**/*.js': ['browserify']
+      'test/unit/**/*.js': ['webpack', 'sourcemap'],
+      'src/scripts/**/*.js': ['webpack', 'sourcemap']
     },
 
-    browserify: {
-      debug: true
-    },
+    webpack: require('../webpack.config'),
 
     plugins: [
+      'karma-webpack',
+      'karma-sourcemap-loader',
       'karma-jasmine',
-      'karma-bro',
       'karma-chrome-launcher'
     ]
   })

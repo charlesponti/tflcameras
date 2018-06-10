@@ -1,8 +1,5 @@
 'use strict'
 
-window.$ =
-window.jQuery = require('jquery')
-
 // Require Angular dependencies
 // This will add these dependencies to the global scope
 require('angular')
@@ -18,7 +15,6 @@ require('./services')
 angular.module('app', [
   'ngRoute',
   'ngResource',
-  'templates',
   'app.directives',
   'app.controllers',
   'app.services'

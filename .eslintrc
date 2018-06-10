@@ -1,10 +1,10 @@
 {
-  "extends": ["eslint:recommended", "standard"],
+  "extends": [
+    "eslint:recommended",
+    "standard"
+  ],
   "globals": {
     "google": true,
     "angular": true
-  },
-  "env": {
-    "jasmine": true
   }
 }

@@ -1,5 +1,6 @@
 .DS_Store
-build/scripts/**
-build/styles/**
+public/assets/**
+public/index.html
+public/cameras.json
 node_modules
 *.log
