@@ -1,4 +1,4 @@
-'use strict'
+require('../styles/main.scss')
 
 // Require Angular dependencies
 // This will add these dependencies to the global scope

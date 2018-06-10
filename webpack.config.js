@@ -1,11 +1,18 @@
 const path = require('path')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-const env = process.env.NODE_ENV
 const HTMLWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
+const env = process.env.NODE_ENV
+const devMode = env === 'development'
+const prodMode = env === 'production'
+const testMode = env === 'test'
 
 const config = {
-  mode: env === 'production' ? 'production' : 'development',
-  devtool: env === 'production' ? 'sourcemap' : 'inline-source-map',
+  mode: prodMode ? 'production' : 'development',
+  devtool: prodMode ? 'sourcemap' : 'inline-source-map',
   entry: path.resolve(__dirname, './src/scripts/main.js'),
   output: {
     filename: '[name].js',
@@ -36,7 +43,7 @@ const config = {
       {
         test: /\.scss$/,
         use: [
-          'style-loader',
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader',
           'postcss-loader'
@@ -48,22 +55,37 @@ const config = {
     new HTMLWebpackPlugin({
       template: './src/index.html',
       filename: '../index.html'
+    }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: devMode ? '[name].css' : '[name].[hash].css',
+      chunkFilename: devMode ? '[id].css' : '[id].[hash].css'
     })
   ]
 }
 
-if (env !== 'test') {
-  config.module.rules.unshift(
-    { test: /\.js$/, enforce: 'pre', use: [{ loader: 'eslint-loader' }] }
-  )
-} else {
-  config.module.rules.unshift(
-    {
+config.module.rules.unshift(
+  testMode
+    ? {
       test: /\.js$/,
       enforce: 'pre',
       use: [{ loader: 'eslint-loader', options: { envs: ['jasmine'] } }]
     }
-  )
+    : { test: /\.js$/, enforce: 'pre', use: [{ loader: 'eslint-loader' }] }
+)
+
+if (prodMode) {
+  config.optimization = {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  }
 }
 
 if (process.env.STATS) {
