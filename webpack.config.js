@@ -5,6 +5,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin')
 
 const config = {
   mode: env === 'production' ? 'production' : 'development',
+  devtool: env === 'production' ? 'sourcemap' : 'inline-source-map',
   entry: path.resolve(__dirname, './src/scripts/main.js'),
   output: {
     filename: '[name].js',
@@ -12,15 +13,6 @@ const config = {
   },
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        enforce: 'pre',
-        use: [
-          {
-            loader: 'eslint-loader'
-          }
-        ]
-      },
       {
         test: /\.js$/,
         use: [
@@ -58,6 +50,20 @@ const config = {
       filename: '../index.html'
     })
   ]
+}
+
+if (env !== 'test') {
+  config.module.rules.unshift(
+    { test: /\.js$/, enforce: 'pre', use: [{ loader: 'eslint-loader' }] }
+  )
+} else {
+  config.module.rules.unshift(
+    {
+      test: /\.js$/,
+      enforce: 'pre',
+      use: [{ loader: 'eslint-loader', options: { envs: ['jasmine'] } }]
+    }
+  )
 }
 
 if (process.env.STATS) {

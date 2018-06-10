@@ -50,6 +50,8 @@
     "karma": "^2.0.2",
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.2",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^3.0.0",
     "ng-annotate-loader": "^0.6.1",
     "node-sass": "^4.9.0",
     "postcss-loader": "^2.1.5",
@@ -85,8 +87,8 @@
     "build:stats": "STATS=true NODE_ENV=production $(npm bin)/webpack-cli --display none",
     "build:watch": "npm run build:dev -- --watch",
     "cameras": "node bin/cameras.js",
-    "test": "$(npm bin)/karma start test/karma.conf.js",
-    "test:e2e": "$(npm bin)/protractor",
+    "test": "NODE_ENV=test $(npm bin)/karma start test/karma.conf.js",
+    "test:e2e": "NODE_ENV=test $(npm bin)/protractor",
     "test:single": "npm test -- --single-run"
   }
 }

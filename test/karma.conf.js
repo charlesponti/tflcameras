@@ -1,5 +1,3 @@
-'use strict'
-
 module.exports = function (config) {
   config.set({
 
@@ -16,7 +14,6 @@ module.exports = function (config) {
     ],
 
     frameworks: [
-      'browserify',
       'jasmine'
     ],
 
@@ -28,17 +25,16 @@ module.exports = function (config) {
     ],
 
     preprocessors: {
-      'test/unit/**/*.js': ['browserify'],
-      'src/scripts/**/*.js': ['browserify']
+      'test/unit/**/*.js': ['webpack', 'sourcemap'],
+      'src/scripts/**/*.js': ['webpack', 'sourcemap']
     },
 
-    browserify: {
-      debug: true
-    },
+    webpack: require('../webpack.config'),
 
     plugins: [
+      'karma-webpack',
+      'karma-sourcemap-loader',
       'karma-jasmine',
-      'karma-bro',
       'karma-chrome-launcher'
     ]
   })

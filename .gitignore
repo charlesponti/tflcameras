@@ -1,4 +1,6 @@
 .DS_Store
 public/assets/**
+public/index.html
+public/cameras.json
 node_modules
 *.log
