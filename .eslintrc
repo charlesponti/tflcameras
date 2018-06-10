@@ -4,6 +4,7 @@
     "standard"
   ],
   "globals": {
-    "google": true
+    "google": true,
+    "angular": true
   }
 }
