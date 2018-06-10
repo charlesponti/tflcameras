@@ -1,5 +1,4 @@
 .DS_Store
-public/scripts/**
-public/styles/**
+public/assets/**
 node_modules
 *.log

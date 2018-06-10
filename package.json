@@ -7,12 +7,28 @@
     "url": "https://github.com/charlesponti/tflcameras/issues"
   },
   "dependencies": {
+    "@angular/common": "^5.2.5",
+    "@angular/compiler": "^5.2.5",
+    "@angular/core": "^5.2.5",
+    "@angular/forms": "^5.2.5",
+    "@angular/platform-browser": "^5.2.5",
+    "@angular/platform-browser-dynamic": "^5.2.5",
+    "@angular/router": "^5.2.5",
+    "@angular/upgrade": "^5.2.5",
     "angular": "^1.7.0",
     "angular-cookies": "^1.7.0",
     "angular-resource": "^1.7.0",
     "angular-route": "^1.7.0",
     "axios": "^0.18.0",
-    "express": "^4.16.3"
+    "bootstrap": "3.3.7",
+    "core-js": "^2.5.3",
+    "express": "^4.16.3",
+    "jquery": "^2.2.4",
+    "lodash": "4.17.4",
+    "moment": "~2.17.1",
+    "reflect-metadata": "^0.1.12",
+    "rxjs": "^5.5.6",
+    "zone.js": "^0.8.20"
   },
   "devDependencies": {
     "angular-mocks": "^1.7.0",
@@ -50,12 +66,12 @@
   },
   "homepage": "https://github.com/charlesponti/tflcameras",
   "keywords": [
-    "static",
-    "node",
-    "html",
+    "angular",
     "css",
+    "html",
+    "node",
     "sass",
-    "angular"
+    "static"
   ],
   "license": "MIT",
   "main": "gulpfile.js",
@@ -64,11 +80,11 @@
     "url": "git://github.com//charlesponti/tflcameras.git"
   },
   "scripts": {
-    "cameras": "node bin/cameras.js",
     "build": "NODE_ENV=production $(npm bin)/webpack-cli --progress --stats",
     "build:dev": "NODE_ENV=development $(npm bin)/webpack-cli --progress --stats",
     "build:stats": "STATS=true NODE_ENV=production $(npm bin)/webpack-cli --display none",
     "build:watch": "npm run build:dev -- --watch",
+    "cameras": "node bin/cameras.js",
     "test": "$(npm bin)/karma start test/karma.conf.js",
     "test:e2e": "$(npm bin)/protractor",
     "test:single": "npm test -- --single-run"
