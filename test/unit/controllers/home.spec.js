@@ -19,18 +19,12 @@ describe('Controllers: HomeCtrl', function () {
   })
 
   afterEach(function () {
-    ctrl =
+    ctrl = undefined
     cameraService = undefined
   })
 
   it('should load cameras', function () {
     expect(cameraService.get).toHaveBeenCalled()
-  })
-
-  describe('.title', function () {
-    it('should have correct value', function () {
-      expect(ctrl.title).toEqual('The TFL Is Watching')
-    })
   })
 
   describe('.closeInfos()', function () {
@@ -50,10 +44,11 @@ describe('Controllers: HomeCtrl', function () {
     it('should close info windows and open new infowindow', function () {
       var infowindow = {
         open: jasmine.createSpy('open'),
-        close: jasmine.createSpy('close')
+        close: jasmine.createSpy('close'),
+        setContent: () => { }
       }
       spyOn(ctrl, 'closeInfos')
-      ctrl.onMarkerClick('fooMap', 'fooMarker', infowindow)
+      ctrl.onMarkerClick('fooMap', 'fooMarker', infowindow, { id: 1, location: 'foo' })
       expect(ctrl.closeInfos).toHaveBeenCalled()
       expect(infowindow.open).toHaveBeenCalledWith('fooMap', 'fooMarker')
     })

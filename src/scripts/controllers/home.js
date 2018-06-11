@@ -11,12 +11,6 @@ module.exports = function (Cameras, $timeout) {
   var vm = this
 
   /**
-   * @desc Title displayed in template
-   * @type {String}
-   */
-  this.title = 'The TFL Is Watching'
-
-  /**
    * @desc Google map
    * @type {google.maps.Map}
    */
@@ -63,16 +57,13 @@ module.exports = function (Cameras, $timeout) {
       icon: {
         url: 'images/camera.png',
         size: new google.maps.Size(81, 81),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(25, 25),
         scaledSize: new google.maps.Size(25, 25)
       }
     })
 
     // Create infowindow for marker
-    var infowindow = new google.maps.InfoWindow({
-      content: Cameras.getImageUrl(camera.id) + '<br><br>' + camera.location
-    })
+    var infowindow = new google.maps.InfoWindow({})
 
     // Add info window to list of info windows
     vm.infos.push(infowindow)
@@ -81,7 +72,9 @@ module.exports = function (Cameras, $timeout) {
     google.maps.event.addListener(
       marker,
       'click',
-      vm.onMarkerClick.bind(vm, map, marker, infowindow)
+      function () {
+        vm.onMarkerClick(map, marker, infowindow, camera)
+      }
     )
 
     return vm
@@ -94,9 +87,10 @@ module.exports = function (Cameras, $timeout) {
    * @param {google.maps.InfoWindow} infowindow
    * @return {Object} vm
    */
-  vm.onMarkerClick = function (map, marker, infowindow) {
+  vm.onMarkerClick = function (map, marker, infowindow, camera) {
     vm.closeInfos()
     infowindow.open(map, marker)
+    infowindow.setContent(`${Cameras.getImageUrl(camera.id)}<br><br>${camera.location}`)
     return vm
   }
 
@@ -104,8 +98,8 @@ module.exports = function (Cameras, $timeout) {
    * @desc Handle successful request for cameras
    * @param {Object} data Response from request
    */
-  vm.onCameraLoadSuccess = function (response) {
-    vm.cameras = response.data.cameras
+  vm.onCameraLoadSuccess = function ({ data: { cameras } }) {
+    vm.cameras = cameras
 
     for (var i = 0; i < vm.cameras.length; i++) {
       vm.addMarker(vm.cameras[i])
