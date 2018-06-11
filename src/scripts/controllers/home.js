@@ -70,9 +70,7 @@ module.exports = function (Cameras, $timeout) {
     })
 
     // Create infowindow for marker
-    var infowindow = new google.maps.InfoWindow({
-      content: Cameras.getImageUrl(camera.id) + '<br><br>' + camera.location
-    })
+    var infowindow = new google.maps.InfoWindow({})
 
     // Add info window to list of info windows
     vm.infos.push(infowindow)
@@ -94,9 +92,10 @@ module.exports = function (Cameras, $timeout) {
    * @param {google.maps.InfoWindow} infowindow
    * @return {Object} vm
    */
-  vm.onMarkerClick = function (map, marker, infowindow) {
+  vm.onMarkerClick = function (map, marker, infowindow, camera) {
     vm.closeInfos()
     infowindow.open(map, marker)
+    infowindow.setContent(`${Cameras.getImageUrl(camera.id)}<br><br>${camera.location}`)
     return vm
   }
 
