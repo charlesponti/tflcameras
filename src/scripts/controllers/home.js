@@ -63,8 +63,7 @@ module.exports = function (Cameras, $timeout) {
       icon: {
         url: 'images/camera.png',
         size: new google.maps.Size(81, 81),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(25, 25),
         scaledSize: new google.maps.Size(25, 25)
       }
     })
