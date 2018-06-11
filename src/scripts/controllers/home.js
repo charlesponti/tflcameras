@@ -11,12 +11,6 @@ module.exports = function (Cameras, $timeout) {
   var vm = this
 
   /**
-   * @desc Title displayed in template
-   * @type {String}
-   */
-  this.title = 'The TFL Is Watching'
-
-  /**
    * @desc Google map
    * @type {google.maps.Map}
    */
@@ -78,7 +72,9 @@ module.exports = function (Cameras, $timeout) {
     google.maps.event.addListener(
       marker,
       'click',
-      vm.onMarkerClick.bind(vm, map, marker, infowindow)
+      function () {
+        vm.onMarkerClick(map, marker, infowindow, camera)
+      }
     )
 
     return vm
@@ -102,8 +98,8 @@ module.exports = function (Cameras, $timeout) {
    * @desc Handle successful request for cameras
    * @param {Object} data Response from request
    */
-  vm.onCameraLoadSuccess = function (response) {
-    vm.cameras = response.data.cameras
+  vm.onCameraLoadSuccess = function ({ data: { cameras } }) {
+    vm.cameras = cameras
 
     for (var i = 0; i < vm.cameras.length; i++) {
       vm.addMarker(vm.cameras[i])
