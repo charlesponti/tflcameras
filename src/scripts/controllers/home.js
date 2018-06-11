@@ -1,7 +1,5 @@
 'use strict'
 
-var _ = require('lodash')
-
 /**
  * @ngInject
  */
@@ -40,7 +38,7 @@ module.exports = function (Cameras, $timeout) {
    */
   vm.closeInfos = function () {
     // Loop through all info boxes and close them.
-    _.each(vm.infos, function (infowindow) {
+    vm.infos.forEach(function (infowindow) {
       return infowindow.close()
     })
 
@@ -130,7 +128,7 @@ module.exports = function (Cameras, $timeout) {
     // This delay will simply add a little buffer so the marker animation is
     // less "janky".
     $timeout(function () {
-      return _.each(vm.cameras, vm.addMarker)
+      return vm.cameras.forEach(vm.addMarker)
     }, 1500)
 
     return vm
