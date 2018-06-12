@@ -16,8 +16,6 @@
     "@angular/router": "^5.2.5",
     "@angular/upgrade": "^5.2.5",
     "angular": "^1.7.0",
-    "angular-cookies": "^1.7.0",
-    "angular-resource": "^1.7.0",
     "angular-route": "^1.7.0",
     "axios": "^0.18.0",
     "bootstrap": "4.0.0",
