@@ -4,24 +4,22 @@ require('../styles/main.scss')
 // This will add these dependencies to the global scope
 require('angular')
 require('angular-route')
-require('angular-resource')
 
 // Application dependencies
 require('./controllers')
-require('./directives')
+// require('./directives')
 require('./services')
 
 // Declare main application
 angular.module('app', [
   'ngRoute',
-  'ngResource',
-  'app.directives',
+  // 'app.directives',
   'app.controllers',
   'app.services'
 ])
 
 // Add constants
-angular.module('app').constant('Constants', require('./constants'))
+// angular.module('app').constant('Constants', require('./constants'))
 
 // Add configuration
 angular.module('app').config(require('./config'))
