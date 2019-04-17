@@ -8,12 +8,4 @@ An applicaton displaying all of the TFL cameras around London and their last sav
 
 ## Features
 
-### Build With:
-
-* Sass
-* AngularJS
-* Gulp
-* Browserify
-* JSHint
-* Karma
-* Jasmine
+### Build With React, Google Maps API, & TfL API

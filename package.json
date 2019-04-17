@@ -1,94 +1,38 @@
 {
-  "name": "tflcameras",
-  "description": "An application to display the TFL cameras in London",
-  "version": "1.0.0",
-  "author": "CJ Ponti <cj@ponti.io>",
-  "bugs": {
-    "url": "https://github.com/charlesponti/tflcameras/issues"
-  },
+  "name": "tfl-cameras",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "@angular/common": "^5.2.5",
-    "@angular/compiler": "^5.2.5",
-    "@angular/core": "^5.2.5",
-    "@angular/forms": "^5.2.5",
-    "@angular/platform-browser": "^5.2.5",
-    "@angular/platform-browser-dynamic": "^5.2.5",
-    "@angular/router": "^5.2.5",
-    "@angular/upgrade": "^5.2.5",
-    "angular": "^1.7.0",
-    "angular-route": "^1.7.0",
+    "@types/node": "^11.13.4",
+    "@types/react": "^16.8.13",
+    "@types/react-dom": "^16.8.4",
     "axios": "^0.18.0",
-    "bootstrap": "4.0.0",
-    "core-js": "^2.5.3",
-    "express": "^4.16.3",
-    "jquery": "^3.0.0",
-    "moment": "~2.19.3",
-    "reflect-metadata": "^0.1.12",
-    "rxjs": "^5.5.6",
-    "zone.js": "^0.8.20"
-  },
-  "devDependencies": {
-    "angular-mocks": "^1.7.0",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.3",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.7.0",
-    "css-loader": "^0.28.11",
-    "eslint": "^4.19.1",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-loader": "^2.0.0",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-standard": "^3.1.0",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
-    "jasmine-core": "^3.1.0",
-    "karma": "^2.0.2",
-    "karma-chrome-launcher": "^2.2.0",
-    "karma-jasmine": "^1.1.2",
-    "karma-sourcemap-loader": "^0.3.7",
-    "karma-webpack": "^3.0.0",
-    "mini-css-extract-plugin": "^0.4.0",
-    "ng-annotate-loader": "^0.6.1",
-    "node-sass": "^4.9.0",
-    "optimize-css-assets-webpack-plugin": "^4.0.2",
-    "postcss-loader": "^2.1.5",
-    "protractor": "^5.3.2",
-    "sass-loader": "^7.0.3",
-    "style-loader": "^0.21.0",
-    "uglifyjs-webpack-plugin": "^1.2.5",
-    "webpack": "^4.12.0",
-    "webpack-bundle-analyzer": "^2.13.1",
-    "webpack-cli": "^3.0.3",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-scripts": "2.1.8",
     "xml2json": "^0.11.2"
   },
-  "engines": {
-    "node": ">=9.9.0"
-  },
-  "homepage": "https://github.com/charlesponti/tflcameras",
-  "keywords": [
-    "angular",
-    "css",
-    "html",
-    "node",
-    "sass",
-    "static"
-  ],
-  "license": "MIT",
-  "main": "gulpfile.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com//charlesponti/tflcameras.git"
-  },
   "scripts": {
-    "build": "NODE_ENV=production $(npm bin)/webpack-cli --progress --stats",
-    "build:dev": "NODE_ENV=development $(npm bin)/webpack-cli --progress --stats",
-    "build:stats": "STATS=true NODE_ENV=production $(npm bin)/webpack-cli --display none",
-    "build:watch": "npm run build:dev -- --watch",
-    "cameras": "node bin/cameras.js",
-    "test": "NODE_ENV=test $(npm bin)/karma start test/karma.conf.js",
-    "test:e2e": "NODE_ENV=test $(npm bin)/protractor",
-    "test:single": "npm test -- --single-run"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/googlemaps": "^3.30.19",
+    "@types/jest": "^24.0.11",
+    "react-testing-library": "^6.0.0",
+    "tslint": "^5.14.0",
+    "typescript": "^3.4.3"
   }
 }

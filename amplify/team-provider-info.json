@@ -1,0 +1,14 @@
+{
+    "prod": {
+        "awscloudformation": {
+            "AuthRoleName": "tfl-cameras-20190417195216-authRole",
+            "UnauthRoleArn": "arn:aws:iam::882718322629:role/tfl-cameras-20190417195216-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::882718322629:role/tfl-cameras-20190417195216-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "tfl-cameras-20190417195216-deployment",
+            "UnauthRoleName": "tfl-cameras-20190417195216-unauthRole",
+            "StackName": "tfl-cameras-20190417195216",
+            "StackId": "arn:aws:cloudformation:us-east-1:882718322629:stack/tfl-cameras-20190417195216/d4b2e6c0-616b-11e9-ac9a-0a009cdf2216"
+        }
+    }
+}
